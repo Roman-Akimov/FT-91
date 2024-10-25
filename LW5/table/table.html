@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Таблица</title>
+    <link rel="stylesheet" href="table.css" />
+  </head>
+
+  <body>
+    <div class="header">
+      <a href="index.html">Основная страница</a>
+      <a href="page2.html">Позиционирование элементов</a>
+      <a href="table.html">Таблица</a>
+    </div>
+
+    <h2>Добавить нового студента</h2>
+    <form id="studentForm">
+      <label for="id">ID:</label>
+      <input type="number" id="id" name="id" required /><br />
+
+      <label for="FIO">ФИО студента:</label>
+      <input type="text" id="FIO" name="FIO" required /><br />
+
+      <label for="numZ">Номер зачетной книжки: </label>
+      <input type="number" id="numZ" name="numZ" required /><br />
+
+      <label for="numG">Номер группы: </label>
+      <input type="number" id="numG" name="numG" required /><br />
+
+      <label for="gender">Пол: </label>
+      <select name="gender" id="gender">
+        <option value="М">М</option>
+        <option value="Ж">Ж</option></select
+      ><br />
+
+      <label for="Age">Возраст: </label>
+      <input
+        type="number"
+        id="Age"
+        name="Age"
+        min="17"
+        max="101"
+        required
+      /><br />
+
+      <label for="forma">Форма поступления: </label>
+      <select name="forma" id="forma">
+        <option value="Очная">Очная</option>
+        <option value="Заочная">Заочная</option></select
+      ><br />
+
+      <label for="direction">Название направления: </label>
+      <input type="text" id="direction" name="direction" required /><br />
+
+      <button type="submit">Добавить</button>
+    </form>
+
+    <table>
+      <caption>
+        Данные студентов
+      </caption>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>ФИО студента</th>
+          <th>Номер зачетной книжки</th>
+          <th>Номер группы</th>
+          <th>Пол</th>
+          <th>Возраст</th>
+          <th>Форма поступления</th>
+          <th>Название направления</th>
+        </tr>
+      </thead>
+      <tbody id="studentTableBody">
+        <tr>
+          <td>1</td>
+          <td>Акимов Роман Олегович</td>
+          <td>2052</td>
+          <td>6204</td>
+          <td>М</td>
+          <td>19</td>
+          <td>Очная</td>
+          <td>ПМИ</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Петров Петр Петрович</td>
+          <td>654321</td>
+          <td>3102</td>
+          <td>М</td>
+          <td>20</td>
+          <td>Заочная</td>
+          <td>ФИИТ</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Григорьева Светлана Николаевна</td>
+          <td>9034</td>
+          <td>7925</td>
+          <td>Ж</td>
+          <td>19</td>
+          <td>Очная</td>
+          <td>ИБАС</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Сидорова Анна Андреевна</td>
+          <td>7812</td>
+          <td>2133</td>
+          <td>Ж</td>
+          <td>20</td>
+          <td>Очная</td>
+          <td>Менеджмент</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Кузнецов Алексей Викторович</td>
+          <td>3878</td>
+          <td>4201</td>
+          <td>М</td>
+          <td>18</td>
+          <td>Заочная</td>
+          <td>Программная инженерия</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Данилов Максим Фаритович</td>
+          <td>1248</td>
+          <td>1333</td>
+          <td>М</td>
+          <td>20</td>
+          <td>Очная</td>
+          <td>Физика</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      document
+        .getElementById("studentForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const id = document.getElementById("id").value;
+          const FIO = document.getElementById("FIO").value;
+          const numZ = document.getElementById("numZ").value;
+          const numG = document.getElementById("numG").value;
+          const gender = document.getElementById("gender").value;
+          const Age = document.getElementById("Age").value;
+          const forma = document.getElementById("forma").value;
+          const direction = document.getElementById("direction").value;
+
+          const newRow = `<tr>
+                <td>${id}</td>
+                <td>${FIO}</td>
+                <td>${numZ}</td>
+                <td>${numG}</td>
+                <td>${gender}</td>
+                <td>${Age}</td>
+                <td>${forma}</td>
+                <td>${direction}</td>
+            </tr>`;
+
+          document
+            .getElementById("studentTableBody")
+            .insertAdjacentHTML("beforeend", newRow);
+          this.reset();
+        });
+    </script>
+  </body>
+</html>
